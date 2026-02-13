@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff4d6d">
+    <link rel="icon" href="https://fav.farm/❤️" />
+    <title>For My Valentine ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="bg-collage-container"></div>
+    <div id="particles-container"></div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="music/bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <main>
+        <!-- Page 1: Landing -->
+        <section id="landing" class="page active">
+            <div class="content-wrapper">
+                <h1 class="title">Hey Vaishnavi <span class="heart-pulse">❤️</span></h1>
+                <p class="subtitle">I have something special to ask you...</p>
+                <button id="start-btn" class="primary-btn">Begin Journey</button>
+            </div>
+        </section>
+
+        <!-- Page 2: Memories -->
+        <section id="memories" class="page hidden">
+            <div class="content-wrapper">
+                <h2 class="section-title">A Little Note</h2>
+                <div class="message-card">
+                    <p class="message-text">
+                        "Every moment spent with you feels like a beautiful dream I never want to wake up from.
+                        Your smile is my favorite thing in the world."
+                    </p>
+
+                    <p class="message-text">
+                        Just wanted to remind you how amazing you are. ✨
+                    </p>
+                </div>
+                <button id="next-btn" class="secondary-btn">One Last Thing →</button>
+            </div>
+        </section>
+
+        <!-- Page 3: Proposal -->
+        <section id="proposal" class="page hidden">
+            <div class="content-wrapper">
+                <h2 class="question">Will you be my Valentine? 🌹</h2>
+                <div class="buttons-container">
+                    <button id="yes-btn" class="yes-btn">YES ❤️</button>
+                    <button id="no-btn" class="no-btn">NO 💔</button>
+                </div>
+                <div id="celebration" class="hidden">
+                    <h2 class="celebration-text">❤️ I Love You! 😘</h2>
+                    <p>Best decision ever! 💖</p>
+
+                    <!-- Knitted Heart Animation -->
+                    <div class="knitted-heart-container">
+                        <svg viewBox="0 0 100 100" class="knitted-heart-svg">
+                            <path class="heart-thread"
+                                d="M50,90 C20,70 5,40 5,25 C5,10 20,0 35,5 C45,10 50,20 50,20 C50,20 55,10 65,5 C80,0 95,10 95,25 C95,40 80,70 50,90 Z"
+                                fill="none" stroke="#e01e37" stroke-width="0.5" />
+                            <path class="heart-thread"
+                                d="M50,90 Q20,70 5,25 T35,5 T50,20 T65,5 T95,25 T50,90 M50,85 Q25,65 10,25 T35,10 T50,25 T65,10 T90,25 T50,85 M50,80 Q30,60 15,30 T35,15 T50,30 T65,15 T85,30 T50,80 M40,40 Q45,35 50,40 Q55,35 60,40"
+                                fill="none" stroke="#ff4d6d" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path class="heart-thread-main"
+                                d="M50,30 L45,35 L55,35 L40,40 L60,40 L35,45 L65,45 L30,50 L70,50 L25,55 L75,55 L20,60 L80,60 L25,70 L75,70 L35,80 L65,80 L50,90"
+                                fill="none" stroke="#d90429" stroke-width="2" stroke-linejoin="round"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

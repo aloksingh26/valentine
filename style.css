@@ -1,0 +1,433 @@
+:root {
+    --primary-color: #ff4d6d;
+    --secondary-color: #ff8fa3;
+    --bg-color-start: #fff0f3;
+    --bg-color-end: #ffe5ec;
+    --text-color: #590d22;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--bg-color-start), var(--bg-color-end));
+    color: var(--text-color);
+    position: relative;
+    /* Prevent selection for better UX */
+    user-select: none;
+}
+
+/* Background Particles */
+#particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Background Photo Collage Container */
+#bg-collage-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0.5;
+    /* Good visibility */
+}
+
+/* Photo items (floating in BG) */
+.bg-photo-item {
+    position: absolute;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: white;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.bg-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.particle {
+    position: absolute;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatUp 15s linear infinite, sway 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    0% {
+        margin-left: -10px;
+    }
+
+    100% {
+        margin-left: 10px;
+    }
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    padding: 2rem;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.page::-webkit-scrollbar {
+    display: none;
+}
+
+.page.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.page.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+/* Typography */
+h1.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Heart Pulse */
+.heart-pulse {
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Content Wrapper & Glassmorphism - TIGHTENED LAYOUT */
+.content-wrapper {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    /* Compact padding */
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    max-width: 450px;
+    /* Compact width */
+    width: 90%;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy transition */
+}
+
+/* Specific state for proposal box initially (optional constraint) */
+#proposal .content-wrapper {
+    max-width: 400px;
+}
+
+/* Expanded state for celebration */
+#proposal .content-wrapper.expanded {
+    max-width: 550px;
+    /* Bigger width */
+    transform: scale(1.05);
+    /* Slight pop */
+}
+
+/* Buttons */
+button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+}
+
+.primary-btn,
+.yes-btn {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+}
+
+.secondary-btn {
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.no-btn {
+    background: #e9ecef;
+    color: #495057;
+    position: relative;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Proposal Specifics */
+.message-card {
+    margin-bottom: 2rem;
+}
+
+.message-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 2rem;
+    position: relative;
+    height: 60px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    h1.title {
+        font-size: 3rem;
+    }
+
+    .content-wrapper {
+        padding: 1.5rem;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+    }
+}
+
+/* Celebration */
+#celebration {
+    margin-top: 20px;
+}
+
+.celebration-text {
+    color: var(--primary-color);
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    animation: bounceIn 1s;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Character GIF - ADJUSTED */
+/* Character GIF (Removed) */
+
+
+/* Sparkle Trail (Hearts) */
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+    animation: sparkleAnim 1s linear forwards;
+    z-index: 100;
+    opacity: 0.8;
+}
+
+@keyframes sparkleAnim {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+/* Click Burst */
+.burst-part {
+    position: absolute;
+    width: 4px;
+    height: 15px;
+    background: var(--primary-color);
+    pointer-events: none;
+    transform-origin: bottom center;
+    border-radius: 2px;
+    opacity: 0.8;
+    z-index: 99;
+    animation: burstAnim 0.8s ease-out forwards;
+}
+
+@keyframes burstAnim {
+    0% {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-40px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Knitted Heart Animation - HUGE SIZE */
+.knitted-heart-container {
+    width: 250px;
+    height: 250px;
+    margin: 10px auto;
+    position: relative;
+    display: block;
+}
+
+.knitted-heart-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* The threads */
+.heart-thread,
+.heart-thread-main {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+.heart-thread-main {
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* Animation triggered by parent class */
+#celebration:not(.hidden) .heart-thread {
+    animation: knitHeart 2.5s linear forwards;
+    /* Slow */
+}
+
+#celebration:not(.hidden) .heart-thread-main {
+    animation: knitHeart 3s ease-in-out forwards;
+    /* Slow */
+    animation-delay: 0.5s;
+}
+
+@keyframes knitHeart {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
